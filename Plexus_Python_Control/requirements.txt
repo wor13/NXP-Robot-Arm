@@ -1,0 +1,7 @@
+# Tested on CPython 3.12, Linux x86_64. Use Python 3.12 64-bit on Windows.
+viser==1.1.1
+trimesh==5.1.1
+numpy>=1.26,<3
+dynamixel-sdk==4.1.0
+pyserial==3.5
+scipy>=1.11,<2

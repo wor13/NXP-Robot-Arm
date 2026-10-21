@@ -1,0 +1,95 @@
+{
+  "approved_digest": null,
+  "steps": [
+    {
+      "kind": "grip",
+      "pose": "gripper_open",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0.3
+    },
+    {
+      "kind": "arm",
+      "pose": "source_approach",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    },
+    {
+      "kind": "arm",
+      "pose": "source_grasp",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    },
+    {
+      "kind": "grip",
+      "pose": "gripper_closed",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0.3
+    },
+    {
+      "kind": "arm",
+      "pose": "source_lift_01",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    },
+    {
+      "kind": "arm",
+      "pose": "source_lift_02",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    },
+    {
+      "kind": "arm",
+      "pose": "source_clear",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    },
+    {
+      "kind": "arm",
+      "pose": "transit_clear",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    },
+    {
+      "kind": "arm",
+      "pose": "target_clear",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    },
+    {
+      "kind": "arm",
+      "pose": "target_lower_01",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    },
+    {
+      "kind": "arm",
+      "pose": "target_seated",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    },
+    {
+      "kind": "grip",
+      "pose": "gripper_open",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0.3
+    },
+    {
+      "kind": "arm",
+      "pose": "target_retracted",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    },
+    {
+      "kind": "arm",
+      "pose": "return_clear",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    },
+    {
+      "kind": "arm",
+      "pose": "source_approach",
+      "minimum_seconds": 0,
+      "dwell_seconds": 0
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "schema_version": 2,
+  "gripper_variant": "stock",
+  "serial": {
+    "port": "COM7",
+    "baud": 1000000
+  },
+  "tool": {
+    "offset_m": [
+      0.09193,
+      -0.0016,
+      0
+    ],
+    "verified": false
+  },
+  "motion": {
+    "ticks_per_second": 70,
+    "ticks_per_second2": 140,
+    "period_s": 0.1,
+    "max_command_step": 16,
+    "following_error_ticks": 32,
+    "arrival_ticks": 4,
+    "settle_timeout_s": 5,
+    "profile_velocity": 10,
+    "profile_acceleration": 5,
+    "watchdog_units": 50
+  },
+  "joints": [
+    {
+      "id": 11,
+      "name": "joint1",
+      "model": 1060,
+      "mode": 4,
+      "counts_per_rev": 4096,
+      "sign": 1,
+      "raw_reference": 2048,
+      "model_reference_rad": 0,
+      "limits": [
+        1000,
+        3000
+      ],
+      "verified": true,
+      "direction_note": "Increasing = left; decreasing = right, viewed from behind the arm toward the claw.",
+      "direction_source": "user observation, 2026-10-21"
+    },
+    {
+      "id": 12,
+      "name": "joint2",
+      "model": 1060,
+      "mode": 4,
+      "counts_per_rev": 4096,
+      "sign": 1,
+      "raw_reference": 2048,
+      "model_reference_rad": 0,
+      "limits": [
+        1000,
+        3000
+      ],
+      "verified": true,
+      "direction_note": "Increasing = arm down; decreasing = arm up.",
+      "direction_source": "user observation, 2026-10-21"
+    },
+    {
+      "id": 13,
+      "name": "joint3",
+      "model": 1060,
+      "mode": 4,
+      "counts_per_rev": 4096,
+      "sign": 1,
+      "raw_reference": 2048,
+      "model_reference_rad": 0,
+      "limits": [
+        1000,
+        3000
+      ],
+      "verified": true,
+      "direction_note": "Increasing = forearm down; decreasing = forearm up.",
+      "direction_source": "user observation, 2026-10-21"
+    },
+    {
+      "id": 1,
+      "name": "joint4",
+      "model": 1200,
+      "mode": 4,
+      "counts_per_rev": 4096,
+      "sign": 1,
+      "raw_reference": 2048,
+      "model_reference_rad": 0,
+      "limits": [
+        1000,
+        3000
+      ],
+      "verified": true,
+      "direction_note": "Increasing = claw down; decreasing = claw up.",
+      "direction_source": "user observation, 2026-10-21",
+      "previous_id": 14
+    },
+    {
+      "id": 2,
+      "name": "joint5",
+      "model": 1200,
+      "mode": 4,
+      "counts_per_rev": 4096,
+      "sign": 1,
+      "raw_reference": 2048,
+      "model_reference_rad": 0,
+      "limits": [
+        1000,
+        3000
+      ],
+      "verified": true,
+      "direction_note": "Increasing = clockwise; decreasing = counterclockwise, looking from behind toward the claw.",
+      "direction_source": "user observation, 2026-10-21",
+      "previous_id": 15
+    },
+    {
+      "id": 3,
+      "name": "gripper_joint_1",
+      "model": 1200,
+      "mode": 4,
+      "counts_per_rev": 4096,
+      "sign": 1,
+      "raw_reference": 2048,
+      "model_reference_rad": 0,
+      "limits": [
+        1000,
+        3000
+      ],
+      "verified": true,
+      "direction_note": "Increasing = open claw; decreasing = close/grip. At 180 degrees: closed without gripping.",
+      "direction_source": "user observation, 2026-10-21",
+      "previous_id": 16
+    }
+  ],
+  "ik": {
+    "vertical_mm_per_second": 2.0,
+    "vertical_mm_per_second2": 4.0,
+    "initial_level_tolerance_deg": 2.0,
+    "orientation_tolerance_deg": 0.35,
+    "feedback_orientation_tolerance_deg": 0.75,
+    "max_goal_xy_error_mm": 0.2,
+    "max_goal_z_error_mm": 0.35,
+    "max_feedback_xy_drift_mm": 0.3
+  },
+  "reference_pose": {
+    "name": "centered_180",
+    "motor_degrees": [
+      180,
+      180,
+      180,
+      180,
+      180,
+      180
+    ],
+    "nominal_raw": [
+      2048,
+      2048,
+      2048,
+      2048,
+      2048,
+      2048
+    ],
+    "model_basis": "Nominal URDF zero pose from user centered-pose photo; verify physical joint offsets before IK.",
+    "gripper_state": "closed_without_gripping",
+    "automatic_startup_motion": false
+  },
+  "gripper": {
+    "motor_id": 3,
+    "neutral_motor_degrees": 180,
+    "neutral_state": "closed_without_gripping",
+    "open_motor_degrees": null,
+    "grip_motor_degrees": null,
+    "note": "Hardware open/grip targets must be taught for the real ring; no grip force is inferred from neutral."
+  }
+}
