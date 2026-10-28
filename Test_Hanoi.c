@@ -1,0 +1,100 @@
+/* Tower of Hanoi solver and text-based visualization. */
+#include <stdio.h>  /* Standard C declarations for console input and output. */
+
+#define MAX_DISKS 10
+
+/* A peg is a stack: disks[0] is the bottom; disks[count - 1] is the top. */
+typedef struct {
+	int disks[MAX_DISKS];
+	int count;
+} Peg;
+
+/* Shared game state: one stack per peg and a counter for completed moves. */
+static Peg pegs[3];
+static unsigned long move_number;
+static const char *peg_names[3] = {"A", "B", "C"};
+
+/* Print the current state. disk_count is passed from main for display sizing. */
+static void draw_state(int disk_count)
+{
+	int row;
+	int peg;
+
+	printf("\nMove %lu\n", move_number);
+	for (row = disk_count - 1; row >= 0; --row) {
+		for (peg = 0; peg < 3; ++peg) {
+			int disk = row < pegs[peg].count ? pegs[peg].disks[row] : 0;
+			int padding = disk_count - disk;
+			int i;
+
+			for (i = 0; i < padding; ++i) putchar(' ');
+			if (disk == 0) {
+				putchar('|');
+			} else {
+				for (i = 0; i < disk; ++i) putchar('=');
+				putchar('|');
+				for (i = 0; i < disk; ++i) putchar('=');
+			}
+			for (i = 0; i < padding; ++i) putchar(' ');
+			putchar(' ');
+		}
+		putchar('\n');
+	}
+	for (peg = 0; peg < 3; ++peg)
+		printf("%*s%s%*s ", disk_count, "", peg_names[peg], disk_count, "");
+	putchar('\n');
+}
+
+/* Transfer the top disk from peg index from to peg index to, then redraw. */
+static void move_disk(int from, int to, int disk_count)
+{
+	int disk = pegs[from].disks[--pegs[from].count];
+	pegs[to].disks[pegs[to].count++] = disk;
+	++move_number;
+	printf("Move disk %d from peg %s to peg %s.\n",
+		   disk, peg_names[from], peg_names[to]);
+	draw_state(disk_count);
+}
+
+/*
+ * Recursive algorithm: n and the peg indexes are supplied by main or a
+ * recursive call. Move n-1 disks to the spare peg, move the largest, then
+ * move the smaller stack onto it. The result takes 2^n - 1 legal moves.
+ */
+static void solve_hanoi(int n, int source, int spare, int target, int disk_count)
+{
+	if (n == 1) {
+		move_disk(source, target, disk_count);
+		return;
+	}
+	solve_hanoi(n - 1, source, target, spare, disk_count);
+	move_disk(source, target, disk_count);
+	solve_hanoi(n - 1, spare, source, target, disk_count);
+}
+
+/* Standard C entry point: validate user input, initialize peg A, and solve. */
+int main(void)
+{
+	int disk_count;
+	int disk;
+
+	printf("Tower of Hanoi visualizer\nEnter the number of disks (1-%d): ",
+		   MAX_DISKS);
+	if (scanf("%d", &disk_count) != 1 || disk_count < 1 ||
+		disk_count > MAX_DISKS) {
+		fprintf(stderr, "Enter a whole number from 1 to %d.\n", MAX_DISKS);
+		return 1;
+	}
+
+	pegs[0].count = disk_count;
+	pegs[1].count = 0;
+	pegs[2].count = 0;
+	for (disk = 0; disk < disk_count; ++disk)
+		pegs[0].disks[disk] = disk_count - disk;
+
+	puts("Initial configuration:");
+	draw_state(disk_count);
+	solve_hanoi(disk_count, 0, 1, 2, disk_count);
+	printf("Solved in %lu moves.\n", move_number);
+	return 0;
+}
