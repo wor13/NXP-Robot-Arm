@@ -1,6 +1,4 @@
-//Jonathan Shull
-//With the help of ClaudeAI
-// Tower of Hanoi solver and text-based visualization.
+/* Tower of Hanoi solver and text-based visualization. */
 #include <stdio.h>  /* Standard C declarations for console input and output. */
 
 #define MAX_DISKS 10
