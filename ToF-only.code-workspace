@@ -1,0 +1,13 @@
+{
+    "folders": [
+        {
+            "name": "ToF - VL53L0X",
+            "path": "."
+        },
+        {
+            "name": "frdmmcxn947_camera_persondetect_view",
+            "path": ".."
+        }
+    ],
+    "settings": {}
+}
