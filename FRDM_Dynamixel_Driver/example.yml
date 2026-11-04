@@ -1,0 +1,17 @@
+lpflexcomm_interrupt_transfer:
+  boards:
+    frdmmcxn947@cm33_core0: []
+  contents:
+    document:
+      brief: The lpflexcomm_interrupt_transfer example shows how to use lpi2c driver
+        and lpuart driver to build a interrupt based application.In this example,
+        lpi2c and lpuart use same lpflexcomm instance.
+      category: driver_examples/lpflexcomm
+      example_readme:
+      - examples/driver_examples/lpflexcomm/interrupt_transfer/readme.md
+      - ${board_root}/${board}/driver_examples/lpflexcomm/interrupt_transfer/example_board_readme.md
+      - ${board_root}/${board}/examples_shared_readme.md
+      name: lpflexcomm_interrupt_transfer${core_id_suffix_name}
+    meta_path: examples/driver_examples/lpflexcomm/interrupt_transfer
+    project-root-path: boards/${board}/driver_examples/lpflexcomm/interrupt_transfer/${multicore_foldername}
+  section-type: freestanding_application
